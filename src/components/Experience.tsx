@@ -107,7 +107,7 @@ const Experience = () => {
                 key={j}
                 className="text-secondary-foreground text-sm leading-relaxed flex gap-3">
                 
-                    <span className="text-primary mt-1.5 shrink-0 rounded-lg">▸</span>
+                    <span className="text-primary mt-1.5 shrink-0 rounded-lg text-center">▸</span>
                     {h}
                   </li>
               )}
