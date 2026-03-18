@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const navItems = [
   { label: "Experience", href: "#experience" },
@@ -11,6 +13,7 @@ const navItems = [
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -30,17 +33,47 @@ const Navbar = () => {
       <a href="#" className="font-display text-xl font-bold text-foreground">
         J<span className="text-primary">B</span>
       </a>
-      <div className="flex items-center gap-8">
+
+      {/* Desktop nav */}
+      <div className="hidden md:flex items-center gap-8">
         {navItems.map((item) => (
           <a
             key={item.label}
             href={item.href}
-            className="hidden md:block text-muted-foreground hover:text-primary text-sm font-display tracking-widest transition-colors"
+            className="text-muted-foreground hover:text-primary text-sm font-display tracking-widest transition-colors"
           >
             {item.label}
           </a>
         ))}
       </div>
+
+      {/* Mobile menu */}
+      <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+        <SheetTrigger asChild>
+          <button
+            type="button"
+            className="md:hidden p-2 -mr-2 rounded-md text-foreground hover:bg-secondary/80 hover:text-primary transition-colors"
+            aria-label="Open navigation menu"
+          >
+            <Menu className="h-6 w-6" strokeWidth={2} />
+          </button>
+        </SheetTrigger>
+        <SheetContent side="right" className="w-[min(100vw,20rem)] border-border bg-background z-[100]">
+          <SheetTitle className="sr-only">Site navigation</SheetTitle>
+          <nav className="flex flex-col gap-1 mt-10" aria-label="Main">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="py-3 px-2 text-base font-display tracking-wide text-foreground border-b border-border/60 hover:text-primary hover:bg-secondary/30 transition-colors rounded-sm"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </SheetContent>
+      </Sheet>
     </motion.nav>
   );
 };
