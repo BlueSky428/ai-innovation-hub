@@ -59,7 +59,7 @@ const tagVariants = {
     scale: 1,
     transition: {
       delay: i * 0.07,
-      type: "spring",
+      type: "spring" as const,
       stiffness: 250,
       damping: 20,
     },
