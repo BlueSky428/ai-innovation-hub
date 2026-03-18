@@ -1,9 +1,20 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
+import MandalaDecor from "./MandalaDecor";
+import OrnateDiv from "./OrnateDiv";
+
+const contactItems = [
+  { icon: Mail, label: "bhaduri.jayabrata@gmail.com", href: "mailto:bhaduri.jayabrata@gmail.com" },
+  { icon: Phone, label: "(+91) 9163762717", href: "tel:+919163762717" },
+  { icon: MapPin, label: "Gurugram, India", href: undefined },
+  { icon: Linkedin, label: "LinkedIn Profile", href: "https://www.linkedin.com/in/jayabrata-bhaduri/" },
+];
 
 const Contact = () => {
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24" id="contact">
+    <section className="px-6 md:px-16 lg:px-24 py-24 relative overflow-hidden" id="contact">
+      <MandalaDecor className="-top-16 -right-16" size={250} opacity={0.04} />
+
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -11,30 +22,32 @@ const Contact = () => {
         transition={{ duration: 0.6 }}
         className="max-w-2xl"
       >
-        <div className="line-accent mb-6" />
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+        <div className="line-accent-tricolor mb-6" />
+        <h2 className="font-display text-3xl md:text-4xl font-bold mb-2">
           Let's <span className="text-gradient-gold">Connect</span>
         </h2>
+        <OrnateDiv className="max-w-xs mb-4" />
         <p className="text-secondary-foreground mb-10 leading-relaxed">
           Open to discussing AI solutions, sales strategy, partnerships, or speaking engagements.
         </p>
 
         <div className="space-y-5">
-          {[
-            { icon: Mail, label: "bhaduri.jayabrata@gmail.com", href: "mailto:bhaduri.jayabrata@gmail.com" },
-            { icon: Phone, label: "(+91) 9163762717", href: "tel:+919163762717" },
-            { icon: MapPin, label: "Gurugram, India", href: undefined },
-            { icon: Linkedin, label: "LinkedIn Profile", href: "https://www.linkedin.com/in/jayabrata-bhaduri/" },
-          ].map(({ icon: Icon, label, href }, i) => (
+          {contactItems.map(({ icon: Icon, label, href }, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -15 }}
+              initial={{ opacity: 0, x: -25 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="flex items-center gap-4"
+              transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ x: 8, transition: { duration: 0.2 } }}
+              className="flex items-center gap-4 group cursor-default"
             >
-              <Icon className="w-5 h-5 text-primary shrink-0" />
+              <motion.div
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Icon className="w-5 h-5 text-primary shrink-0 group-hover:drop-shadow-[0_0_6px_hsl(42_80%_55%_/_0.5)] transition-all" />
+              </motion.div>
               {href ? (
                 <a
                   href={href}
@@ -52,8 +65,15 @@ const Contact = () => {
         </div>
       </motion.div>
 
-      {/* Footer */}
-      <div className="mt-24 pt-8 border-t border-border">
+      {/* Footer with ornate divider */}
+      <div className="mt-24 pt-8 border-t border-border relative">
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent origin-center"
+        />
         <p className="text-muted-foreground text-xs">
           © {new Date().getFullYear()} Jayabrata Bhaduri. All rights reserved.
         </p>
