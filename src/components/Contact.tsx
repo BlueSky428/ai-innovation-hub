@@ -6,7 +6,7 @@ import OrnateDiv from "./OrnateDiv";
 const contactItems = [
   { icon: Mail, label: "bhaduri.jayabrata@gmail.com", href: "mailto:bhaduri.jayabrata@gmail.com" },
   { icon: Phone, label: "(+91) 9163762717", href: "tel:+919163762717" },
-  { icon: MapPin, label: "Gurugram, India", href: undefined },
+  { icon: MapPin, label: "New Delhi, India", href: undefined },
   { icon: Linkedin, label: "LinkedIn Profile", href: "https://www.linkedin.com/in/jayabrata-bhaduri/" },
 ];
 
@@ -23,11 +23,11 @@ const Contact = () => {
         className="max-w-2xl"
       >
         <div className="line-accent-tricolor mb-6" />
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-2">
+        <h2 className="font-display text-4xl md:text-5xl font-bold mb-2 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
           Let's <span className="text-gradient-gold">Connect</span>
         </h2>
         <OrnateDiv className="max-w-xs mb-4" />
-        <p className="text-secondary-foreground mb-10 leading-relaxed">
+        <p className="text-secondary-foreground text-lg md:text-xl mb-10 leading-relaxed">
           Open to discussing AI solutions, sales strategy, partnerships, or speaking engagements.
         </p>
 
@@ -53,12 +53,12 @@ const Contact = () => {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="text-secondary-foreground hover:text-primary transition-colors text-sm"
+                  className="text-secondary-foreground hover:text-primary transition-colors text-base"
                 >
                   {label}
                 </a>
               ) : (
-                <span className="text-secondary-foreground text-sm">{label}</span>
+                <span className="text-secondary-foreground text-base">{label}</span>
               )}
             </motion.div>
           ))}
@@ -74,7 +74,7 @@ const Contact = () => {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent origin-center"
         />
-        <p className="text-muted-foreground text-xs">
+        <p className="text-muted-foreground text-sm">
           © {new Date().getFullYear()} Jayabrata Bhaduri. All rights reserved.
         </p>
       </div>

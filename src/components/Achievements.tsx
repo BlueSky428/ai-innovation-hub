@@ -3,39 +3,14 @@ import OrnateDiv from "./OrnateDiv";
 import MandalaDecor from "./MandalaDecor";
 
 const achievements = [
-  { icon: "🎤", title: "TEDx Speaker", year: "2016" },
-  { icon: "🏆", title: "Tata Business Leadership Award", year: "2011" },
-  { icon: "💡", title: "Most Promising Innovation — Tata Group", year: "2009" },
-  { icon: "⭐", title: "Tata Steel Apex Aspire Award", year: "2009" },
-  { icon: "🎓", title: "University of Chicago Urban Labs Award", year: "2016" },
-  { icon: "📜", title: "3 International Patents", year: "" },
-  { icon: "🚀", title: "30 Most Promising Tech Start-Ups in India", year: "" },
-  { icon: "📄", title: "7 AI Papers · 1400+ Citations", year: "" },
-];
-
-const education = [
-  {
-    degree: "MBA in Supply Chain Management",
-    school: "S.P. Jain School of Global Management",
-    year: "2012",
-    location: "Singapore & Dubai",
-  },
-  {
-    degree: "B.E. in Mechanical Engineering",
-    school: "Jadavpur University",
-    year: "2007",
-    location: "Kolkata",
-  },
-];
-
-const competencies = [
-  "AI Based Solution Sales",
-  "SaaS Sales & Strategy",
-  "CRM & Lead Qualification",
-  "Social Media & Email Marketing",
-  "Cold Calling & Client Acquisition",
-  "Team Leadership & Coaching",
-  "Data Analytics & Machine Learning",
+  { icon: "🎤", title: "TEDx Speaker", year: "2016", href: "https://youtu.be/h-ntETVgaNo?si=ar3r_TovdYW9l3CF" },
+  { icon: "🏆", title: "Tata Business Leadership Award", year: "2011", href: undefined },
+  { icon: "💡", title: "Most Promising Innovation — Tata Group", year: "2009", href: undefined },
+  { icon: "⭐", title: "Tata Steel Apex Aspire Award", year: "2009", href: undefined },
+  { icon: "🎓", title: "University of Chicago Urban Labs Award", year: "2016", href: "https://urbanlabs.uchicago.edu/challenges/design-delhi" },
+  { icon: "📜", title: "3 International Patents", year: "", href: "https://patents.google.com/patent/WO2010092586A1/pt" },
+  { icon: "🚀", title: "30 Most Promising Tech Start-Ups in India", year: "", href: "https://yourstory.com/2015/08/capacloud" },
+  { icon: "📄", title: "7 AI Papers · 1400+ Citations", year: "", href: "https://scholar.google.com/citations?user=6we-a3oAAAAJ&hl=en" },
 ];
 
 const cardVariants = {
@@ -48,20 +23,6 @@ const cardVariants = {
       delay: i * 0.08,
       duration: 0.6,
       ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  }),
-};
-
-const tagVariants = {
-  hidden: { opacity: 0, scale: 0.7 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: i * 0.07,
-      type: "spring" as const,
-      stiffness: 250,
-      damping: 20,
     },
   }),
 };
@@ -79,120 +40,51 @@ const Achievements = () => {
         transition={{ duration: 0.6 }}
       >
         <div className="line-accent-tricolor mb-6" />
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
           Awards & <span className="text-gradient-gold">Achievements</span>
         </h2>
         <OrnateDiv className="max-w-xs mb-12" />
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-24 max-w-5xl" style={{ perspective: "800px" }}>
-        {achievements.map((a, i) => (
-          <motion.div
-            key={i}
-            custom={i}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={cardVariants}
-            whileHover={{
-              y: -6,
-              boxShadow: "0 10px 30px -10px hsl(42 80% 55% / 0.2)",
-              borderColor: "hsl(42 80% 55% / 0.5)",
-              transition: { duration: 0.25 },
-            }}
-            className="p-5 rounded-sm bg-secondary/50 border border-border transition-colors group cursor-default"
-          >
+        {achievements.map((a, i) => {
+          const cardContent = (
             <motion.div
-              className="text-2xl mb-3"
-              whileHover={{ scale: 1.3, rotate: [0, -10, 10, 0] }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{
+                y: -6,
+                boxShadow: "0 10px 30px -10px hsl(42 80% 55% / 0.2)",
+                borderColor: "hsl(42 80% 55% / 0.5)",
+                transition: { duration: 0.25 },
+              }}
+              className={`p-5 rounded-sm bg-secondary/50 border border-border transition-colors group h-full ${a.href ? "cursor-pointer hover:border-primary/40" : "cursor-default"}`}
             >
-              {a.icon}
+              <motion.div
+                className="text-2xl mb-3"
+                whileHover={{ scale: 1.3, rotate: [0, -10, 10, 0] }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {a.icon}
+              </motion.div>
+              <h3 className="font-display text-base font-semibold text-foreground leading-snug">
+                {a.title}
+              </h3>
+              {a.year && (
+                <p className="text-muted-foreground text-sm mt-1">{a.year}</p>
+              )}
             </motion.div>
-            <h3 className="font-display text-sm font-semibold text-foreground leading-snug">
-              {a.title}
-            </h3>
-            {a.year && (
-              <p className="text-muted-foreground text-xs mt-1">{a.year}</p>
-            )}
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Competencies */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="line-accent-tricolor mb-6" />
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-          Core <span className="text-gradient-gold">Competencies</span>
-        </h2>
-        <OrnateDiv className="max-w-xs mb-8" />
-      </motion.div>
-
-      <div className="flex flex-wrap gap-3 mb-24 max-w-3xl">
-        {competencies.map((c, i) => (
-          <motion.span
-            key={i}
-            custom={i}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={tagVariants}
-            whileHover={{
-              scale: 1.08,
-              borderColor: "hsl(42 80% 55%)",
-              boxShadow: "0 0 15px hsl(42 80% 55% / 0.15)",
-              transition: { duration: 0.2 },
-            }}
-            className="px-4 py-2 rounded-sm border border-primary/20 text-sm font-display text-secondary-foreground cursor-default transition-all"
-          >
-            {c}
-          </motion.span>
-        ))}
-      </div>
-
-      {/* Education */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="line-accent-tricolor mb-6" />
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-          <span className="text-gradient-gold">Education</span>
-        </h2>
-        <OrnateDiv className="max-w-xs mb-8" />
-      </motion.div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
-        {education.map((e, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{
-              y: -4,
-              boxShadow: "0 8px 25px -8px hsl(42 80% 55% / 0.15)",
-              transition: { duration: 0.2 },
-            }}
-            className="p-6 rounded-sm bg-secondary/50 border border-border cursor-default"
-          >
-            <h3 className="font-display text-base font-semibold text-foreground mb-1">
-              {e.degree}
-            </h3>
-            <p className="text-primary text-sm font-display">{e.school}</p>
-            <p className="text-muted-foreground text-xs mt-2">
-              {e.year} · {e.location}
-            </p>
-          </motion.div>
-        ))}
+          );
+          return (
+            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants} className="h-full">
+              {a.href ? (
+                <a href={a.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+                  {cardContent}
+                </a>
+              ) : (
+                cardContent
+              )}
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
 import Achievements from "@/components/Achievements";
+import Competencies from "@/components/Competencies";
+import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 
 const Index = () => {
@@ -11,6 +13,8 @@ const Index = () => {
       <Hero />
       <Experience />
       <Achievements />
+      <Competencies />
+      <Education />
       <Contact />
     </div>
   );

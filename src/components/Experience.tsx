@@ -7,7 +7,7 @@ const experiences = [
     role: "Senior Vice President",
     company: "AI Work",
     period: "01/2025 – Present",
-    location: "Gurugram",
+    location: "Grand Cayman, Cayman Islands",
     highlights: [
       "Achieved $2M annual revenue target with a team of 10 in the first year",
       "Signed clients like StockTwits (USA), Zerodha, IndMoney, Wonderful Sky (China)",
@@ -19,7 +19,7 @@ const experiences = [
     role: "Outbound Sales Team Lead",
     company: "Maestra",
     period: "09/2020 – 12/2024",
-    location: "Kolkata",
+    location: "Kolkata, India",
     highlights: [
       "Exceeded annual target — USD 490K in last fiscal year",
       "Acquired Netflix India, Koo, and Facebook as clients",
@@ -30,7 +30,7 @@ const experiences = [
     role: "CEO & Founder",
     company: "Capacloud",
     period: "07/2014 – 08/2020",
-    location: "Bangalore",
+    location: "Bangalore, India",
     highlights: [
       "Secured USD 150K venture capital for IoT vertical farming",
       "Partnered with Indian Oil, Godrej, Tata Steel",
@@ -41,7 +41,7 @@ const experiences = [
     role: "Profit Center Head",
     company: "Hellmann Worldwide Logistics",
     period: "03/2012 – 02/2014",
-    location: "Dubai",
+    location: "Dubai, UAE",
     highlights: [
       "Developed OCR-based automated customs clearance software",
       "Led team of 12 to achieve USD 600K annual revenue",
@@ -51,7 +51,7 @@ const experiences = [
     role: "Research Scientist",
     company: "Tata Steel",
     period: "03/2008 – 02/2011",
-    location: "Jamshedpur",
+    location: "Jamshedpur, India",
     highlights: [
       "Managed INR 1 Crore budget for nanofluid & neural network projects",
       "Implemented Capex projects worth INR 60 Crores",
@@ -101,7 +101,7 @@ const Experience = () => {
         transition={{ duration: 0.6 }}
       >
         <div className="line-accent-tricolor mb-6" />
-        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
           Professional <span className="text-gradient-gold">Experience</span>
         </h2>
         <OrnateDiv className="max-w-xs mb-16" />
@@ -147,7 +147,7 @@ const Experience = () => {
                 className="rounded-sm p-4 -m-4 transition-colors hover:bg-secondary/30"
               >
                 <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 mb-2">
-                  <h3 className="font-display text-xl font-semibold text-foreground">
+                  <h3 className="font-display text-2xl font-semibold text-foreground">
                     {exp.role}
                   </h3>
                   <motion.span
@@ -157,7 +157,7 @@ const Experience = () => {
                     {exp.company}
                   </motion.span>
                 </div>
-                <p className="text-muted-foreground text-xs tracking-wide uppercase mb-4">
+                <p className="text-muted-foreground text-sm tracking-wide mb-4">
                   {exp.period} · {exp.location}
                 </p>
                 <ul className="space-y-2">
@@ -169,7 +169,7 @@ const Experience = () => {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
-                      className="text-secondary-foreground text-sm leading-relaxed flex items-center gap-3"
+                      className="text-secondary-foreground text-base leading-relaxed flex items-center gap-3"
                     >
                       <motion.span
                         className="text-primary shrink-0"

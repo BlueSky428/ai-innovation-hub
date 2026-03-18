@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 const navItems = [
   { label: "Experience", href: "#experience" },
   { label: "Achievements", href: "#achievements" },
+  { label: "Competencies", href: "#competencies" },
+  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -25,7 +27,7 @@ const Navbar = () => {
         scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : ""
       }`}
     >
-      <a href="#" className="font-display text-lg font-bold text-foreground">
+      <a href="#" className="font-display text-xl font-bold text-foreground">
         J<span className="text-primary">B</span>
       </a>
       <div className="flex items-center gap-8">
@@ -33,7 +35,7 @@ const Navbar = () => {
           <a
             key={item.label}
             href={item.href}
-            className="hidden md:block text-muted-foreground hover:text-primary text-xs font-display tracking-widest uppercase transition-colors"
+            className="hidden md:block text-muted-foreground hover:text-primary text-sm font-display tracking-widest transition-colors"
           >
             {item.label}
           </a>

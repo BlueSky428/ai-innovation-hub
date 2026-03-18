@@ -44,7 +44,8 @@ const Hero = () => {
         className="absolute bottom-1/4 right-0 w-64 h-64 rounded-full bg-[hsl(var(--saffron))] blur-3xl"
       />
 
-      <div className="relative z-10 max-w-4xl">
+      <div className="relative z-10 max-w-5xl flex flex-col md:flex-row md:items-center md:gap-8 md:justify-between">
+        <div className="min-w-0 flex-1 order-2 md:order-1">
         {/* Ornate line accent */}
         <motion.div
           initial={{ scaleX: 0 }}
@@ -59,9 +60,13 @@ const Hero = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-primary font-display text-sm tracking-[0.3em] uppercase mb-4"
+          className="font-display text-base md:text-lg mb-6 tracking-wide"
         >
-          TEDx Speaker · AI Sales Leader · ML Researcher
+          <span className="text-india-saffron font-medium">TEDx Speaker</span>
+          <span className="mx-2 text-muted-foreground/60">·</span>
+          <span className="text-india-white font-medium">AI Sales Leader</span>
+          <span className="mx-2 text-muted-foreground/60">·</span>
+          <span className="text-india-green font-medium">ML Researcher</span>
         </motion.p>
 
         {/* Animated letter-by-letter name */}
@@ -132,6 +137,21 @@ const Hero = () => {
             LinkedIn
           </motion.a>
         </motion.div>
+        </div>
+
+        {/* Profile photo - right on desktop, above text on mobile */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="shrink-0 mb-4 md:mb-0 order-1 md:order-2"
+        >
+          <img
+            src="/photo.png"
+            alt="Jayabrata Bhaduri"
+            className="h-72 sm:h-80 md:h-[22rem] lg:h-[26rem] xl:h-[30rem] w-auto max-w-full rounded-2xl object-contain shadow-2xl shadow-black/20 ring-1 ring-white/5"
+          />
+        </motion.div>
       </div>
 
       <motion.div
@@ -157,7 +177,7 @@ const Hero = () => {
             >
               {stat.value}
             </motion.div>
-            <div className="text-muted-foreground text-xs tracking-wide uppercase mt-1">
+            <div className="text-muted-foreground text-xs tracking-wide mt-1">
               {stat.label}
             </div>
           </motion.div>
