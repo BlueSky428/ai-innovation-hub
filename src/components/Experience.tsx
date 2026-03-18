@@ -105,7 +105,7 @@ const Experience = () => {
                 {exp.highlights.map((h, j) =>
               <li
                 key={j}
-                className="text-secondary-foreground text-sm leading-relaxed flex gap-3">
+                className="text-secondary-foreground text-sm leading-relaxed flex items-center gap-3">
                 
                     <span className="text-primary mt-1.5 shrink-0 rounded-lg text-center">▸</span>
                     {h}
