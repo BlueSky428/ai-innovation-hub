@@ -5,9 +5,9 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 
 const navItems = [
   { label: "Work Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
   { label: "Achievements", href: "#achievements" },
   { label: "Competencies", href: "#competencies" },
-  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
