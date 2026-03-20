@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const navItems = [
-  { label: "Experience", href: "#experience" },
+  { label: "Work Experience", href: "#experience" },
   { label: "Achievements", href: "#achievements" },
   { label: "Competencies", href: "#competencies" },
   { label: "Education", href: "#education" },

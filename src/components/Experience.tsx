@@ -7,7 +7,7 @@ const experiences = [
     role: "Senior Vice President",
     company: "AI Work",
     period: "01/2025 – Present",
-    location: "Grand Cayman, Cayman Islands",
+    location: "New Delhi, India",
     highlights: [
       "Achieved $2M annual revenue target with a team of 10 in the first year",
       "Signed clients like StockTwits (USA), Zerodha, IndMoney, Wonderful Sky (China)",
@@ -68,7 +68,7 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, x: -40, scale: 0.95 },
+  hidden: { opacity: 1, x: 0, scale: 1 },
   visible: {
     opacity: 1,
     x: 0,
@@ -81,7 +81,7 @@ const cardVariants = {
 };
 
 const highlightVariants = {
-  hidden: { opacity: 0, x: -15 },
+  hidden: { opacity: 1, x: 0 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
@@ -102,7 +102,7 @@ const Experience = () => {
       >
         <div className="line-accent-tricolor mb-6" />
         <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
-          Professional <span className="text-gradient-gold">Experience</span>
+          Work <span className="text-gradient-gold">Experience</span>
         </h2>
         <OrnateDiv className="max-w-xs mb-16" />
       </motion.div>
@@ -110,7 +110,7 @@ const Experience = () => {
       <motion.div
         className="relative max-w-4xl"
         variants={containerVariants}
-        initial="hidden"
+        initial="visible"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
@@ -127,7 +127,7 @@ const Experience = () => {
               {/* Animated timeline dot */}
               <motion.div
                 className="absolute left-0 md:left-4 top-2 -translate-x-[3px]"
-                initial={{ scale: 0 }}
+                initial={{ scale: 1 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15, type: "spring", stiffness: 300, damping: 15 }}
@@ -166,7 +166,7 @@ const Experience = () => {
                       key={j}
                       custom={j}
                       variants={highlightVariants}
-                      initial="hidden"
+                      initial="visible"
                       whileInView="visible"
                       viewport={{ once: true }}
                       className="text-secondary-foreground text-base leading-relaxed flex items-center gap-3"
