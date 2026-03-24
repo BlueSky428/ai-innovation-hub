@@ -4,37 +4,47 @@ import OrnateDiv from "./OrnateDiv";
 
 const experiences = [
   {
-    role: "Senior Vice President",
-    company: "AI Work",
-    period: "01/2025 – Present",
-    location: "New Delhi, India",
+    role: "Founding Senior Vice President",
+    company: "American Impact Investment",
+    period: "03/2026 – Present",
+    location: "Washington, United States",
+    website: "https://americaninvestmentfund.com/",
+    logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=americaninvestmentfund.com",
     highlights: [
-      "Achieved $2M annual revenue target with a team of 10 in the first year",
-      "Signed clients like StockTwits (USA), Zerodha, IndMoney, Wonderful Sky (China)",
-      "Led GTM for AI products: Freddie, Luca, Yumi, Orion, Hermes, Olympus, Saras",
-      "Attracted $400K pipeline for AI engineering services (Multi-Agent RAG)",
+      "Responsible for Sponsorships of First Global Billionaires Alliance Summit 2026.",
     ],
   },
   {
-    role: "Outbound Sales Team Lead",
-    company: "Maestra",
-    period: "09/2020 – 12/2024",
-    location: "Kolkata, India",
+    role: "Chief Executive Officer",
+    company: "Capa.Cloud",
+    period: "12/2025 – Present",
+    location: "Sheridan, Wyoming, United States",
+    website: "https://capa.cloud/",
+    logoUrl: "/capa.cloud.png",
     highlights: [
-      "Exceeded annual target — USD 490K in last fiscal year",
-      "Acquired Netflix India, Koo, and Facebook as clients",
-      "Built data-driven sales culture, enhancing operational metrics",
+      "P2P GPU Sharing Platform.",
+    ],
+  },
+  {
+    role: "Senior Vice President",
+    company: "Alpharithm Investments",
+    period: "01/2025 – 01/2026",
+    location: "Cayman Islands",
+    website: "https://www.alpharithminv.com/",
+    logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=alpharithminv.com",
+    highlights: [
+      "Generate Alpha Using AI.",
     ],
   },
   {
     role: "CEO & Founder",
     company: "Capacloud",
-    period: "07/2014 – 08/2020",
+    period: "07/2014 - 12/2024",
     location: "Bangalore, India",
+    website: "https://www.ndtv.com/delhi-news/delhi-may-solve-its-air-pollution-problem-with-vertical-gardens-1477528",
+    logoUrl: "/capacloud-logo.png",
     highlights: [
-      "Secured USD 150K venture capital for IoT vertical farming",
-      "Partnered with Indian Oil, Godrej, Tata Steel",
-      "Designed vertical garden products for mass-market",
+      "IoT Based Vertical Farming.",
     ],
   },
   {
@@ -42,9 +52,10 @@ const experiences = [
     company: "Hellmann Worldwide Logistics",
     period: "03/2012 – 02/2014",
     location: "Dubai, UAE",
+    website: "https://www.hellmann.com/",
+    logoUrl: "/hellmann-logo.png",
     highlights: [
-      "Developed OCR-based automated customs clearance software",
-      "Led team of 12 to achieve USD 600K annual revenue",
+      "Pioneered an automated customs clearance solution for Dubai Customs.",
     ],
   },
   {
@@ -52,10 +63,10 @@ const experiences = [
     company: "Tata Steel",
     period: "03/2008 – 02/2011",
     location: "Jamshedpur, India",
+    website: "https://www.tatasteel.com/",
+    logoUrl: "/tata-steel-logo.png",
     highlights: [
-      "Managed INR 1 Crore budget for nanofluid & neural network projects",
-      "Implemented Capex projects worth INR 60 Crores",
-      "Collaborated with 40+ global vendors for cost optimization",
+      "Most Promising Innovation in Tata Group. Tata Business Leadership award.",
     ],
   },
 ];
@@ -91,7 +102,7 @@ const highlightVariants = {
 
 const Experience = () => {
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 relative overflow-hidden" id="experience">
+    <section className="px-6 md:px-16 lg:px-24 py-24 relative overflow-visible" id="experience">
       <MandalaDecor className="-top-20 -right-20" size={350} opacity={0.03} />
 
       <motion.div
@@ -141,25 +152,38 @@ const Experience = () => {
                 </div>
               </motion.div>
 
-              {/* Card with hover glow */}
-              <motion.div
+              {/* Card with logo + external link */}
+              <motion.a
+                href={exp.website}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ x: 6, transition: { duration: 0.2 } }}
-                className="rounded-sm p-4 -m-4 transition-colors hover:bg-secondary/30"
+                className="block rounded-sm p-4 -m-4 transition-colors hover:bg-secondary/30"
               >
-                <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 mb-2">
-                  <h3 className="font-display text-2xl font-semibold text-foreground">
-                    {exp.role}
-                  </h3>
-                  <motion.span
-                    className="text-primary font-display text-sm font-medium"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {exp.company}
-                  </motion.span>
+                <div className="flex items-start gap-4 mb-2">
+                  <img
+                    src={exp.logoUrl}
+                    alt={`${exp.company} logo`}
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-md border border-border/60 bg-secondary/40 p-1.5 shrink-0"
+                    loading="lazy"
+                  />
+                  <div className="min-w-0">
+                    <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 mb-1">
+                      <h3 className="font-display text-2xl font-semibold text-foreground">
+                        {exp.role}
+                      </h3>
+                      <motion.span
+                        className="text-primary font-display text-sm font-medium"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {exp.company}
+                      </motion.span>
+                    </div>
+                    <p className="text-muted-foreground text-sm tracking-wide mb-3">
+                      {exp.period} · {exp.location}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-muted-foreground text-sm tracking-wide mb-4">
-                  {exp.period} · {exp.location}
-                </p>
                 <ul className="space-y-2">
                   {exp.highlights.map((h, j) => (
                     <motion.li
@@ -182,7 +206,7 @@ const Experience = () => {
                     </motion.li>
                   ))}
                 </ul>
-              </motion.div>
+              </motion.a>
             </motion.div>
           ))}
         </div>

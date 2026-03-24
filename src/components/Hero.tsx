@@ -27,7 +27,7 @@ const Hero = () => {
   const lastName = "Bhaduri";
 
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 py-20 relative overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 py-20 relative overflow-visible">
       {/* Mandala decorations */}
       <MandalaDecor className="top-10 right-10 md:right-20" size={400} opacity={0.05} />
       <MandalaDecor className="-bottom-20 -left-20" size={300} opacity={0.04} />
@@ -62,11 +62,13 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="font-display text-base md:text-lg mb-6 tracking-wide"
         >
-          <span className="text-india-saffron font-medium">TEDx Speaker</span>
-          <span className="mx-2 text-muted-foreground/60">·</span>
-          <span className="text-india-white font-medium">AI Sales Leader</span>
-          <span className="mx-2 text-muted-foreground/60">·</span>
-          <span className="text-india-green font-medium">ML Researcher</span>
+          <span className="text-primary font-semibold">Impact Investor</span>
+          <span className="mx-2 text-muted-foreground/40">·</span>
+          <span className="text-foreground/90 font-medium">Serial Founder</span>
+          <span className="mx-2 text-muted-foreground/40">·</span>
+          <span className="text-india-saffron font-medium">Public Speaker</span>
+          <span className="mx-2 text-muted-foreground/40">·</span>
+          <span className="text-india-green font-medium">Scientist</span>
         </motion.p>
 
         {/* Animated letter-by-letter name */}
@@ -107,9 +109,10 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 1 }}
           className="text-secondary-foreground text-lg md:text-xl max-w-2xl leading-relaxed mb-12"
         >
-          Accomplished professional with 17 years of experience in AI/SaaS Sales,
-          business development, and start-up innovation. Driving revenue growth and
-          building scalable business solutions across global markets.
+          Serial risk taker with 17+ years of experience scaling technology from lab to
+          the masses. TEDx speaker on climate change. Winner of the University of
+          Chicago Urban Labs Award and the Tata Business Leadership Award. Holder of 3
+          manufacturing patents; author of 7 AI papers with 1,400+ citations.
         </motion.p>
 
         <motion.div

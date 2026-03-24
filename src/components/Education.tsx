@@ -8,20 +8,16 @@ const education = [
     school: "S.P. Jain School of Global Management",
     year: "Apr 2011 - Mar 2012",
     location: "Singapore & Dubai",
-    descriptions: [
-      "Focused on global supply chain strategy and operations management.",
-      "Built a cross-market perspective through coursework in Singapore and Dubai.",
-    ],
+    website: "https://www.spjain.ae/",
+    logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=spjain.ae",
   },
   {
     degree: "B.E. in Mechanical Engineering",
     school: "Jadavpur University",
     year: "May 2003 - Apr 2007",
     location: "Kolkata, India",
-    descriptions: [
-      "Built a strong engineering foundation in mechanics, manufacturing, and systems thinking.",
-      "Developed analytical problem-solving skills used across leadership and innovation roles.",
-    ],
+    website: "https://jadavpuruniversity.in/",
+    logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=jadavpuruniversity.in",
   },
 ];
 
@@ -47,7 +43,7 @@ const itemVariants = {
 
 const Education = () => {
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 bg-card relative overflow-hidden" id="education">
+    <section className="px-6 md:px-16 lg:px-24 py-24 bg-card relative overflow-visible" id="education">
       <MandalaDecor className="-bottom-20 -left-16" size={350} opacity={0.03} />
 
       <motion.div
@@ -91,36 +87,38 @@ const Education = () => {
                 </div>
               </motion.div>
 
-              <motion.div
+              <motion.a
+                href={e.website}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ x: 6, transition: { duration: 0.2 } }}
-                className="rounded-sm p-4 -m-4 transition-colors hover:bg-secondary/30"
+                className="block rounded-sm p-4 -m-4 transition-colors hover:bg-secondary/30"
               >
-                <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 mb-2">
-                  <h3 className="font-display text-2xl font-semibold text-foreground">
-                    {e.degree}
-                  </h3>
-                  <motion.span
-                    className="text-primary font-display text-sm font-medium"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {e.school}
-                  </motion.span>
+                <div className="flex items-start gap-4 mb-2">
+                  <img
+                    src={e.logoUrl}
+                    alt={`${e.school} logo`}
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-md border border-border/60 bg-secondary/40 p-1.5 shrink-0"
+                    loading="lazy"
+                  />
+                  <div className="min-w-0">
+                    <div className="flex flex-col gap-1 mb-1">
+                      <motion.span
+                        className="text-primary font-display text-sm font-medium"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {e.school}
+                      </motion.span>
+                      <h3 className="font-display text-2xl font-semibold text-foreground">
+                        {e.degree}
+                      </h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm tracking-wide mb-2">
+                      {e.year} · {e.location}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-muted-foreground text-sm tracking-wide mb-2">
-                  {e.year} · {e.location}
-                </p>
-                <ul className="space-y-2 mt-3">
-                  {e.descriptions.map((description, j) => (
-                    <li
-                      key={j}
-                      className="text-secondary-foreground text-base leading-relaxed flex items-start gap-3"
-                    >
-                      <span className="text-primary shrink-0 mt-1">✦</span>
-                      {description}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+              </motion.a>
             </motion.div>
           ))}
         </div>

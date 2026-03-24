@@ -28,7 +28,7 @@ const contactItems: { icon: LucideIcon | typeof WhatsAppIcon; label: string; hre
 
 const Contact = () => {
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 relative overflow-hidden" id="contact">
+    <section className="px-6 md:px-16 lg:px-24 py-24 relative overflow-visible" id="contact">
       <MandalaDecor className="-top-16 -right-16" size={250} opacity={0.04} />
 
       <motion.div
