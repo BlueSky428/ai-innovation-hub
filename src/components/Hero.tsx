@@ -130,7 +130,7 @@ const Hero = () => {
             Get in Touch
           </motion.a>
           <motion.a
-            href="https://www.linkedin.com/in/jayabrata-bhaduri/"
+            href="https://www.linkedin.com/in/jay-bhaduri/"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, borderColor: "hsl(42 80% 55%)" }}

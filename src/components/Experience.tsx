@@ -6,7 +6,7 @@ const experiences = [
   {
     role: "Founding Senior Vice President",
     company: "American Impact Investment",
-    period: "03/2026 – Present",
+    period: "03/2026 - Present",
     location: "Washington, United States",
     website: "https://americaninvestmentfund.com/",
     logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=americaninvestmentfund.com",
@@ -17,7 +17,7 @@ const experiences = [
   {
     role: "Chief Executive Officer",
     company: "Capa.Cloud",
-    period: "12/2025 – Present",
+    period: "12/2025 - Present",
     location: "Sheridan, Wyoming, United States",
     website: "https://capa.cloud/",
     logoUrl: "/capa.cloud.png",
@@ -28,7 +28,7 @@ const experiences = [
   {
     role: "Senior Vice President",
     company: "Alpharithm Investments",
-    period: "01/2025 – 01/2026",
+    period: "01/2025 - 01/2026",
     location: "Cayman Islands",
     website: "https://www.alpharithminv.com/",
     logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=alpharithminv.com",
@@ -50,7 +50,7 @@ const experiences = [
   {
     role: "Profit Center Head",
     company: "Hellmann Worldwide Logistics",
-    period: "03/2012 – 02/2014",
+    period: "03/2012 - 02/2014",
     location: "Dubai, UAE",
     website: "https://www.hellmann.com/",
     logoUrl: "/hellmann-logo.png",
@@ -61,7 +61,7 @@ const experiences = [
   {
     role: "Research Scientist",
     company: "Tata Steel",
-    period: "03/2008 – 02/2011",
+    period: "03/2008 - 02/2011",
     location: "Jamshedpur, India",
     website: "https://www.tatasteel.com/",
     logoUrl: "/tata-steel-logo.png",

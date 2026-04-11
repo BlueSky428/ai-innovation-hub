@@ -7,7 +7,7 @@ import OrnateDiv from "./OrnateDiv";
 const contactItems: { icon: LucideIcon; label: string; href?: string }[] = [
   { icon: Mail, label: "bhaduri.jayabrata@gmail.com", href: "mailto:bhaduri.jayabrata@gmail.com" },
   { icon: Send, label: "@Thehivesoul", href: "https://t.me/Thehivesoul" },
-  { icon: Linkedin, label: "linkedin.com/in/jayabrata-bhaduri", href: "https://www.linkedin.com/in/jayabrata-bhaduri/" },
+  { icon: Linkedin, label: "linkedin.com/in/jay-bhaduri", href: "https://www.linkedin.com/in/jay-bhaduri/" },
 ];
 
 const Contact = () => {
