@@ -19,7 +19,7 @@ const competencies = [
     icon: Brain,
   },
   {
-    title: "SaaS Sales & Strategy",
+    title: "Sales & Strategy",
     description: "Builds scalable GTM plans across pipeline creation, conversion, and retention.",
     icon: BriefcaseBusiness,
   },
@@ -88,34 +88,32 @@ const Competencies = () => {
         {competencies.map((c, i) => {
           const Icon = c.icon;
           return (
-          <motion.div
-            key={i}
-            custom={i}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={cardVariants}
-            whileHover={{
-              y: -6,
-              borderColor: "hsl(42 80% 55%)",
-              boxShadow: "0 16px 36px -16px hsl(42 80% 55% / 0.28)",
-              transition: { duration: 0.2 },
-            }}
-            className="relative p-6 rounded-xl border border-primary/20 bg-gradient-to-br from-secondary/65 via-secondary/35 to-background/70 backdrop-blur-sm transition-all overflow-hidden"
-          >
-            <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[radial-gradient(circle_at_top_right,hsl(42_80%_55%_/_0.14),transparent_55%)]" />
-            <div className="w-11 h-11 rounded-full border border-primary/25 bg-background/55 flex items-center justify-center mb-4">
-              <Icon className="w-5 h-5 text-primary" />
-            </div>
-            <h3 className="font-display text-xl font-semibold text-foreground mb-2 leading-tight">
-              {c.title}
-            </h3>
-            <p className="text-secondary-foreground text-base leading-relaxed">
-              {c.description}
-            </p>
-          </motion.div>
-        );
-      })}
+            <motion.div
+              key={i}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={cardVariants}
+              whileHover={{
+                y: -6,
+                borderColor: "hsl(42 80% 55%)",
+                boxShadow: "0 16px 36px -16px hsl(42 80% 55% / 0.28)",
+                transition: { duration: 0.2 },
+              }}
+              className="relative p-6 rounded-xl border border-primary/20 bg-gradient-to-br from-secondary/65 via-secondary/35 to-background/70 backdrop-blur-sm transition-all overflow-hidden"
+            >
+              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[radial-gradient(circle_at_top_right,hsl(42_80%_55%_/_0.14),transparent_55%)]" />
+              <div className="w-11 h-11 rounded-full border border-primary/25 bg-background/55 flex items-center justify-center mb-4">
+                <Icon className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-2 leading-tight">
+                {c.title}
+              </h3>
+              <p className="text-secondary-foreground text-base leading-relaxed">{c.description}</p>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

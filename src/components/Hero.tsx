@@ -122,7 +122,7 @@ const Hero = () => {
           className="flex flex-wrap gap-6 mb-12"
         >
           <motion.a
-            href="mailto:bhaduri.jayabrata@gmail.com"
+            href="mailto:jay@americaninvestmentfund.com"
             whileHover={{ scale: 1.05, boxShadow: "0 0 25px hsl(42 80% 55% / 0.3)" }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display font-medium text-sm tracking-wide rounded-sm transition-all"

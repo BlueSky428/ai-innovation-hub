@@ -8,6 +8,8 @@ const navItems = [
   { label: "Education", href: "#education" },
   { label: "Achievements", href: "#achievements" },
   { label: "Competencies", href: "#competencies" },
+  { label: "Trivia", href: "#trivia" },
+  { label: "Reference", href: "#reference" },
   { label: "Contact", href: "#contact" },
 ];
 
