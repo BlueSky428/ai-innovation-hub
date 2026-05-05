@@ -62,13 +62,13 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="font-display text-base md:text-lg mb-6 tracking-wide"
         >
-          <span className="text-primary font-semibold">Impact Investor</span>
+          <span className="text-primary font-semibold">Supply Chain Specialist</span>
           <span className="mx-2 text-muted-foreground/40">·</span>
           <span className="text-foreground/90 font-medium">Serial Founder</span>
           <span className="mx-2 text-muted-foreground/40">·</span>
           <span className="text-india-saffron font-medium">Public Speaker</span>
           <span className="mx-2 text-muted-foreground/40">·</span>
-          <span className="text-india-green font-medium">Scientist</span>
+          <span className="text-india-green font-medium">AI Scientist</span>
         </motion.p>
 
         {/* Animated letter-by-letter name */}
@@ -122,7 +122,7 @@ const Hero = () => {
           className="flex flex-wrap gap-6 mb-12"
         >
           <motion.a
-            href="mailto:jay@americaninvestmentfund.com"
+            href="mailto:ceo@capa.cloud"
             whileHover={{ scale: 1.05, boxShadow: "0 0 25px hsl(42 80% 55% / 0.3)" }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display font-medium text-sm tracking-wide rounded-sm transition-all"

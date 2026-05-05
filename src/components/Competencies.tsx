@@ -3,6 +3,7 @@ import {
   Brain,
   BriefcaseBusiness,
   ChartNoAxesCombined,
+  Code2,
   Megaphone,
   PhoneCall,
   Users,
@@ -47,6 +48,12 @@ const competencies = [
     title: "Data Analytics & Machine Learning",
     description: "Uses analytics and ML insights to guide strategy, prioritization, and results.",
     icon: ChartNoAxesCombined,
+  },
+  {
+    title: "Computer Programming",
+    description:
+      "Our team Builds and ships production-grade software across modern web stacks, APIs, data and ML pipelines, GPU and agent workloads, cloud infrastructure, and blockchain integrations, with disciplined testing and delivery.",
+    icon: Code2,
   },
 ] satisfies { title: string; description: string; icon: LucideIcon }[];
 

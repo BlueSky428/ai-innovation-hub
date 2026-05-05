@@ -5,7 +5,7 @@ import MandalaDecor from "./MandalaDecor";
 import OrnateDiv from "./OrnateDiv";
 
 const contactItems: { icon: LucideIcon; label: string; href?: string }[] = [
-  { icon: Mail, label: "jay@americaninvestmentfund.com", href: "mailto:jay@americaninvestmentfund.com" },
+  { icon: Mail, label: "ceo@capa.cloud", href: "mailto:ceo@capa.cloud" },
   { icon: Send, label: "@Thehivesoul", href: "https://t.me/Thehivesoul" },
   { icon: Linkedin, label: "linkedin.com/in/jay-bhaduri", href: "https://www.linkedin.com/in/jay-bhaduri/" },
 ];

@@ -4,14 +4,14 @@ import OrnateDiv from "./OrnateDiv";
 
 const experiences = [
   {
-    role: "Founding Senior Vice President",
-    company: "American Impact Investment",
+    role: "Co-Founder",
+    company: "Defense.Codes",
     period: "03/2026 - Present",
-    location: "Washington, United States",
-    website: "https://americaninvestmentfund.com/",
-    logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=americaninvestmentfund.com",
+    location: "Munich, Germany",
+    website: "https://defense.codes/",
+    logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=defense.codes",
     highlights: [
-      "Responsible for Sponsorships of First Global Billionaires Alliance Summit 2026.",
+      "Monte Carlo supply chain risk analysis for defense, space, and aerospace.",
     ],
   },
   {
@@ -22,7 +22,18 @@ const experiences = [
     website: "https://capa.cloud/",
     logoUrl: "/capa.cloud.png",
     highlights: [
-      "P2P GPU Sharing Platform.",
+      "P2P GPU Exchange on Blockchain. Carbon neutral alternative to AWS.",
+    ],
+  },
+  {
+    role: "Co-Founder",
+    company: "Mugen.Codes",
+    period: "01/2025 - Present",
+    location: "Tokyo, Japan",
+    website: "https://mugen.codes/",
+    logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=mugen.codes",
+    highlights: [
+      "Calm delivery of mission critical software for defense, space and brain-computer interface.",
     ],
   },
   {
@@ -33,7 +44,7 @@ const experiences = [
     website: "https://www.alpharithminv.com/",
     logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=alpharithminv.com",
     highlights: [
-      "Generate Alpha Using AI.",
+      "Used Agent Swarm to generate Alpha in equity markets.",
     ],
   },
   {
@@ -44,7 +55,7 @@ const experiences = [
     website: "https://www.ndtv.com/delhi-news/delhi-may-solve-its-air-pollution-problem-with-vertical-gardens-1477528",
     logoUrl: "/capacloud-logo.png",
     highlights: [
-      "IoT Based Vertical Farming.",
+      "Internet of Things and Computer Vision Based Vertical Farming Solution.",
     ],
   },
   {
