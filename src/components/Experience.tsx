@@ -175,7 +175,7 @@ const Experience = () => {
                   <img
                     src={exp.logoUrl}
                     alt={`${exp.company} logo`}
-                    className="w-14 h-14 md:w-16 md:h-16 rounded-md border border-border/60 bg-secondary/40 p-1.5 shrink-0 object-contain object-center"
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-md border border-border/60 bg-white p-1.5 shrink-0 object-contain object-center"
                     loading="lazy"
                   />
                   <div className="min-w-0">
