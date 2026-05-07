@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import { Mail, Linkedin, Send } from "lucide-react";
+import { Globe, Mail, Linkedin, Send } from "lucide-react";
 import MandalaDecor from "./MandalaDecor";
 import OrnateDiv from "./OrnateDiv";
 
 const contactItems: { icon: LucideIcon; label: string; href?: string }[] = [
   { icon: Mail, label: "ceo@capa.cloud", href: "mailto:ceo@capa.cloud" },
+  { icon: Globe, label: "defense.codes — supply chain risk intelligence", href: "https://defense.codes/" },
   { icon: Send, label: "@Thehivesoul", href: "https://t.me/Thehivesoul" },
   { icon: Linkedin, label: "linkedin.com/in/jay-bhaduri", href: "https://www.linkedin.com/in/jay-bhaduri/" },
 ];

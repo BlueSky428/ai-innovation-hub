@@ -139,6 +139,16 @@ const Hero = () => {
           >
             LinkedIn
           </motion.a>
+          <motion.a
+            href="https://defense.codes/"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05, borderColor: "hsl(42 80% 55%)" }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-2 px-6 py-3 border border-primary/30 text-primary font-display font-medium text-sm tracking-wide rounded-sm transition-all"
+          >
+            Defense.Codes
+          </motion.a>
         </motion.div>
         </div>
 

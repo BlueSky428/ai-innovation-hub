@@ -9,7 +9,7 @@ const experiences = [
     period: "03/2026 - Present",
     location: "Munich, Germany",
     website: "https://defense.codes/",
-    logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=defense.codes",
+    logoUrl: "/defense.codes.png",
     highlights: [
       "Monte Carlo supply chain risk analysis for defense, space, and aerospace.",
     ],
