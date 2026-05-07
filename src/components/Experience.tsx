@@ -31,7 +31,7 @@ const experiences = [
     period: "01/2025 - Present",
     location: "Tokyo, Japan",
     website: "https://mugen.codes/",
-    logoUrl: "https://www.google.com/s2/favicons?sz=128&domain_url=mugen.codes",
+    logoUrl: "/mugen.codes.png",
     highlights: [
       "Calm delivery of mission critical software for defense, space and brain-computer interface.",
     ],
@@ -175,7 +175,7 @@ const Experience = () => {
                   <img
                     src={exp.logoUrl}
                     alt={`${exp.company} logo`}
-                    className="w-14 h-14 md:w-16 md:h-16 rounded-md border border-border/60 bg-secondary/40 p-1.5 shrink-0"
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-md border border-border/60 bg-secondary/40 p-1.5 shrink-0 object-contain object-center"
                     loading="lazy"
                   />
                   <div className="min-w-0">
