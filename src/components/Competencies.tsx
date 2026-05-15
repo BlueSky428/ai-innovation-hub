@@ -12,6 +12,12 @@ import {
 } from "lucide-react";
 import OrnateDiv from "./OrnateDiv";
 import MandalaDecor from "./MandalaDecor";
+import { useSectionAnimate } from "@/hooks/use-section-animate";
+import {
+  sectionHeaderVariants,
+  staggerContainerVariants,
+  staggerItemVariants,
+} from "@/lib/section-animations";
 
 const competencies = [
   {
@@ -57,32 +63,24 @@ const competencies = [
   },
 ] satisfies { title: string; description: string; icon: LucideIcon }[];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 26, scale: 0.98 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      delay: i * 0.08,
-      duration: 0.55,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  }),
-};
-
 const Competencies = () => {
+  const { ref, isActive, animationKey } = useSectionAnimate("competencies");
+
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 bg-background relative overflow-visible" id="competencies">
+    <section
+      ref={ref}
+      className="px-6 md:px-16 lg:px-24 py-24 bg-background relative overflow-visible"
+      id="competencies"
+    >
       <MandalaDecor className="-top-20 -right-20" size={350} opacity={0.03} />
       <div className="pointer-events-none absolute top-8 -left-12 w-72 h-72 rounded-full bg-primary/10 blur-3xl" />
       <div className="pointer-events-none absolute bottom-10 right-0 w-72 h-72 rounded-full bg-[hsl(var(--indian-green))/0.12] blur-3xl" />
 
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        key={`header-${animationKey}`}
+        variants={sectionHeaderVariants}
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
       >
         <div className="line-accent-tricolor mb-6" />
         <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
@@ -91,17 +89,19 @@ const Competencies = () => {
         <OrnateDiv className="max-w-xs mb-8" />
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl">
+      <motion.div
+        key={`grid-${animationKey}`}
+        className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl"
+        variants={staggerContainerVariants}
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
+      >
         {competencies.map((c, i) => {
           const Icon = c.icon;
           return (
             <motion.div
               key={i}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={cardVariants}
+              variants={staggerItemVariants}
               whileHover={{
                 y: -6,
                 borderColor: "hsl(42 80% 55%)",
@@ -121,7 +121,7 @@ const Competencies = () => {
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </section>
   );
 };

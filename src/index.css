@@ -54,7 +54,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     overflow-x: hidden;
   }
 
@@ -63,6 +63,8 @@
   [id="achievements"],
   [id="competencies"],
   [id="education"],
+  [id="trivia"],
+  [id="reference"],
   [id="contact"] {
     scroll-margin-top: 5.5rem;
   }

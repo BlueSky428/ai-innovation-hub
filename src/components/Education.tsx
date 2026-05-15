@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import OrnateDiv from "./OrnateDiv";
 import MandalaDecor from "./MandalaDecor";
+import { useSectionAnimate } from "@/hooks/use-section-animate";
+import {
+  sectionHeaderVariants,
+  staggerContainerVariants,
+  staggerItemVariants,
+} from "@/lib/section-animations";
 
 const education = [
   {
@@ -21,36 +27,22 @@ const education = [
   },
 ];
 
-const timelineVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.16 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -24, scale: 0.97 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  },
-};
-
 const Education = () => {
+  const { ref, isActive, animationKey } = useSectionAnimate("education");
+
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 bg-card relative overflow-visible" id="education">
+    <section
+      ref={ref}
+      className="px-6 md:px-16 lg:px-24 py-24 bg-card relative overflow-visible"
+      id="education"
+    >
       <MandalaDecor className="-bottom-20 -left-16" size={350} opacity={0.03} />
 
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        key={`header-${animationKey}`}
+        variants={sectionHeaderVariants}
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
       >
         <div className="line-accent-tricolor mb-6" />
         <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
@@ -60,23 +52,26 @@ const Education = () => {
       </motion.div>
 
       <motion.div
+        key={`timeline-${animationKey}`}
         className="relative max-w-4xl"
-        variants={timelineVariants}
+        variants={staggerContainerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        animate={isActive ? "visible" : "hidden"}
       >
         <div className="absolute left-1 md:left-4 top-0 bottom-0 w-px bg-gradient-to-b from-primary/60 via-primary/25 to-transparent" />
 
         <div className="space-y-10">
           {education.map((e, i) => (
-            <motion.div key={i} variants={itemVariants} className="relative pl-10 md:pl-16 group">
+            <motion.div key={i} variants={staggerItemVariants} className="relative pl-10 md:pl-16 group">
               <motion.div
                 className="absolute left-1 md:left-4 top-6 -translate-x-[3px]"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, type: "spring", stiffness: 300, damping: 16 }}
+                variants={{
+                  hidden: { scale: 0 },
+                  visible: {
+                    scale: 1,
+                    transition: { type: "spring", stiffness: 300, damping: 16 },
+                  },
+                }}
               >
                 <div className="w-3 h-3 rounded-full bg-primary relative">
                   <motion.div

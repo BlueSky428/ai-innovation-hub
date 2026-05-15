@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import MandalaDecor from "./MandalaDecor";
 import OrnateDiv from "./OrnateDiv";
+import { useSectionAnimate } from "@/hooks/use-section-animate";
+import {
+  sectionHeaderVariants,
+  staggerContainerVariants,
+  staggerItemVariants,
+} from "@/lib/section-animations";
 
 const experiences = [
   {
@@ -82,45 +88,31 @@ const experiences = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.15 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 1, x: 0, scale: 1 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: {
-      duration: 0.7,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  },
-};
-
 const highlightVariants = {
-  hidden: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, x: -12 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" as const },
+    transition: { delay: i * 0.06, duration: 0.4, ease: "easeOut" as const },
   }),
 };
 
 const Experience = () => {
+  const { ref, isActive, animationKey } = useSectionAnimate("experience");
+
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 relative overflow-visible" id="experience">
+    <section
+      ref={ref}
+      className="px-6 md:px-16 lg:px-24 py-24 relative overflow-visible"
+      id="experience"
+    >
       <MandalaDecor className="-top-20 -right-20" size={350} opacity={0.03} />
 
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        key={`header-${animationKey}`}
+        variants={sectionHeaderVariants}
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
       >
         <div className="line-accent-tricolor mb-6" />
         <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
@@ -130,29 +122,30 @@ const Experience = () => {
       </motion.div>
 
       <motion.div
+        key={`timeline-${animationKey}`}
         className="relative max-w-4xl"
-        variants={containerVariants}
-        initial="visible"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerContainerVariants}
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
       >
-        {/* Timeline line with gradient */}
         <div className="absolute left-0 md:left-4 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
 
         <div className="space-y-12">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              variants={cardVariants}
+              variants={staggerItemVariants}
               className="relative pl-8 md:pl-14 group"
             >
-              {/* Animated timeline dot */}
               <motion.div
                 className="absolute left-0 md:left-4 top-2 -translate-x-[3px]"
-                initial={{ scale: 1 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, type: "spring", stiffness: 300, damping: 15 }}
+                variants={{
+                  hidden: { scale: 0 },
+                  visible: {
+                    scale: 1,
+                    transition: { type: "spring", stiffness: 300, damping: 15 },
+                  },
+                }}
               >
                 <div className="w-3 h-3 rounded-full bg-primary relative">
                   <motion.div
@@ -163,7 +156,6 @@ const Experience = () => {
                 </div>
               </motion.div>
 
-              {/* Card with logo + external link */}
               <motion.a
                 href={exp.website}
                 target="_blank"
@@ -195,15 +187,17 @@ const Experience = () => {
                     </p>
                   </div>
                 </div>
-                <ul className="space-y-2">
+                <motion.ul
+                  className="space-y-2"
+                  variants={staggerContainerVariants}
+                  initial="hidden"
+                  animate={isActive ? "visible" : "hidden"}
+                >
                   {exp.highlights.map((h, j) => (
                     <motion.li
                       key={j}
                       custom={j}
                       variants={highlightVariants}
-                      initial="visible"
-                      whileInView="visible"
-                      viewport={{ once: true }}
                       className="text-secondary-foreground text-base leading-relaxed flex items-center gap-3"
                     >
                       <motion.span
@@ -216,7 +210,7 @@ const Experience = () => {
                       {h}
                     </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
               </motion.a>
             </motion.div>
           ))}

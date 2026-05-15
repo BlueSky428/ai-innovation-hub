@@ -6,19 +6,22 @@ import Achievements from "@/components/Achievements";
 import Competencies from "@/components/Competencies";
 import TriviaAndReference from "@/components/TriviaAndReference";
 import Contact from "@/components/Contact";
+import { SectionNavigationProvider } from "@/contexts/SectionNavigationContext";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <Hero />
-      <Experience />
-      <Education />
-      <Achievements />
-      <Competencies />
-      <TriviaAndReference />
-      <Contact />
-    </div>
+    <SectionNavigationProvider>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <Hero />
+        <Experience />
+        <Education />
+        <Achievements />
+        <Competencies />
+        <TriviaAndReference />
+        <Contact />
+      </div>
+    </SectionNavigationProvider>
   );
 };
 

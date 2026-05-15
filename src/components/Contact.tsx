@@ -3,6 +3,12 @@ import type { LucideIcon } from "lucide-react";
 import { Globe, Mail, Linkedin, Send } from "lucide-react";
 import MandalaDecor from "./MandalaDecor";
 import OrnateDiv from "./OrnateDiv";
+import { useSectionAnimate } from "@/hooks/use-section-animate";
+import {
+  sectionHeaderVariants,
+  staggerContainerVariants,
+  slideInLeftVariants,
+} from "@/lib/section-animations";
 
 const contactItems: { icon: LucideIcon; label: string; href?: string }[] = [
   { icon: Mail, label: "ceo@capa.cloud", href: "mailto:ceo@capa.cloud" },
@@ -12,36 +18,40 @@ const contactItems: { icon: LucideIcon; label: string; href?: string }[] = [
 ];
 
 const Contact = () => {
+  const { ref, isActive, animationKey } = useSectionAnimate("contact");
+
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 relative overflow-visible" id="contact">
+    <section
+      ref={ref}
+      className="px-6 md:px-16 lg:px-24 py-24 relative overflow-visible"
+      id="contact"
+    >
       <MandalaDecor className="-top-16 -right-16" size={250} opacity={0.04} />
 
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        key={`content-${animationKey}`}
         className="max-w-2xl"
+        variants={staggerContainerVariants}
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
       >
-        <div className="line-accent-tricolor mb-6" />
-        <h2 className="font-display text-4xl md:text-5xl font-bold mb-2 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
-          Let's <span className="text-gradient-gold">Connect</span>
-        </h2>
-        <OrnateDiv className="max-w-xs mb-4" />
-        <p className="text-secondary-foreground text-lg md:text-xl mb-10 leading-relaxed">
-          Open to discussing AI solutions, sales strategy, partnerships, or speaking engagements.
-        </p>
+        <motion.div variants={sectionHeaderVariants} className="mb-10">
+          <div className="line-accent-tricolor mb-6" />
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-2 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
+            Let's <span className="text-gradient-gold">Connect</span>
+          </h2>
+          <OrnateDiv className="max-w-xs mb-4" />
+          <p className="text-secondary-foreground text-lg md:text-xl leading-relaxed">
+            Open to discussing AI solutions, sales strategy, partnerships, or speaking engagements.
+          </p>
+        </motion.div>
 
-        <div className="space-y-5">
-          {contactItems.map(({ icon: Icon, label, href }, i) => (
+        {contactItems.map(({ icon: Icon, label, href }, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -25 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              variants={slideInLeftVariants}
               whileHover={{ x: 8, transition: { duration: 0.2 } }}
-              className="flex items-center gap-4 group cursor-default"
+              className="flex items-center gap-4 group cursor-default mb-5 last:mb-0"
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
@@ -63,16 +73,13 @@ const Contact = () => {
               )}
             </motion.div>
           ))}
-        </div>
       </motion.div>
 
-      {/* Footer with ornate divider */}
       <div className="mt-24 pt-8 border-t border-border relative">
         <motion.div
           initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          animate={isActive ? { scaleX: 1 } : { scaleX: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
           className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent origin-center"
         />
         <p className="text-muted-foreground text-sm">

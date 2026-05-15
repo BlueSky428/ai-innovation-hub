@@ -3,6 +3,12 @@ import type { LucideIcon } from "lucide-react";
 import { Lightbulb, Medal, Mic2, Rocket, Star, ScrollText, GraduationCap, FileText } from "lucide-react";
 import OrnateDiv from "./OrnateDiv";
 import MandalaDecor from "./MandalaDecor";
+import { useSectionAnimate } from "@/hooks/use-section-animate";
+import {
+  sectionHeaderVariants,
+  staggerContainerVariants,
+  staggerItemVariants,
+} from "@/lib/section-animations";
 
 const achievements = [
   { icon: Mic2, title: "TEDx Speaker", year: "2016", href: "https://youtu.be/h-ntETVgaNo?si=ar3r_TovdYW9l3CF" },
@@ -15,33 +21,24 @@ const achievements = [
   { icon: FileText, title: "7 AI Papers · 1400+ Citations", year: "", href: "https://scholar.google.com/citations?user=6we-a3oAAAAJ&hl=en" },
 ] satisfies { icon: LucideIcon; title: string; year: string; href?: string }[];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30, rotateY: -10 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    rotateY: 0,
-    transition: {
-      delay: i * 0.08,
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  }),
-};
-
 const Achievements = () => {
+  const { ref, isActive, animationKey } = useSectionAnimate("achievements");
+
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 bg-card relative overflow-visible" id="achievements">
+    <section
+      ref={ref}
+      className="px-6 md:px-16 lg:px-24 py-24 bg-card relative overflow-visible"
+      id="achievements"
+    >
       <MandalaDecor className="-bottom-32 -left-16" size={350} opacity={0.03} />
       <div className="pointer-events-none absolute -top-24 right-0 w-80 h-80 rounded-full bg-primary/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-28 left-1/3 w-72 h-72 rounded-full bg-[hsl(var(--indian-green))/0.12] blur-3xl" />
 
-      {/* Achievements */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        key={`header-${animationKey}`}
+        variants={sectionHeaderVariants}
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
       >
         <div className="line-accent-tricolor mb-6" />
         <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight inline-block bg-foreground/5 px-4 py-2 rounded-lg border-l-4 border-primary">
@@ -50,7 +47,14 @@ const Achievements = () => {
         <OrnateDiv className="max-w-xs mb-12" />
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-24 max-w-5xl" style={{ perspective: "1000px" }}>
+      <motion.div
+        key={`grid-${animationKey}`}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-24 max-w-5xl"
+        style={{ perspective: "1000px" }}
+        variants={staggerContainerVariants}
+        initial="hidden"
+        animate={isActive ? "visible" : "hidden"}
+      >
         {achievements.map((a, i) => {
           const Icon = a.icon;
           const cardContent = (
@@ -92,7 +96,7 @@ const Achievements = () => {
             </motion.div>
           );
           return (
-            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants} className="h-full">
+            <motion.div key={i} variants={staggerItemVariants} className="h-full">
               {a.href ? (
                 <a href={a.href} target="_blank" rel="noopener noreferrer" className="block h-full">
                   {cardContent}
@@ -103,7 +107,7 @@ const Achievements = () => {
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </section>
   );
 };
